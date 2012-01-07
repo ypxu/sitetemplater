@@ -1,0 +1,4 @@
+# Comment out following lines will disable any web crawler.
+#
+# User-agent: *
+# Disallow: /

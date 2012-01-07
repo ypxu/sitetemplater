@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+mkdir $1 &> /dev/null
+
+# get target and script name
+DIR=`cd $1; pwd`
+FILE_NAME=`basename $0`
+FULL_PATH=`readlink $0`
+
+if [ -n "$FULL_PATH" ]; then
+  # go to actual dir
+  FILE_DIR=`dirname $FULL_PATH`
+  cd $FILE_DIR
+fi
+
+# create new site
+git archive master | tar -x -C $DIR
+
+# cleanup
+cd $DIR
+rm $FILE_NAME
